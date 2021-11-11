@@ -20,6 +20,13 @@ async function run(){
         // Get Api
         app.get("/store", async(req,res)=>{
             const cursor = carCollection.find({});
+            const splitData = cursor.limit(6);
+            const result = await splitData.toArray();
+            res.send(result);
+        });
+        // Get More details api
+        app.get("/store/more", async(req,res)=>{
+            const cursor = carCollection.find({});
             const result = await cursor.toArray();
             res.send(result);
         });
