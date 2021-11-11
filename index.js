@@ -5,6 +5,10 @@ const { MongoClient } = require('mongodb');
 const port = process.env.PORT || 5000;
 require('dotenv').config();
 
+// Middle Ware
+app.use(cors());
+app.use(express.json());
+
 // Connect Databae with Server
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.y4rvt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
