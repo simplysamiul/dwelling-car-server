@@ -17,6 +17,7 @@ async function run(){
         await client.connect();
         const database = client.db("store");
         const carCollection = database.collection("items");
+        const serviceCollection = database.collection("services");
         // Get Api
         app.get("/store", async(req,res)=>{
             const cursor = carCollection.find({});
@@ -27,6 +28,11 @@ async function run(){
         // Get More details api
         app.get("/store/more", async(req,res)=>{
             const cursor = carCollection.find({});
+            const result = await cursor.toArray();
+            res.send(result);
+        });
+        app.get("/services", async(req,res)=>{
+            const cursor = serviceCollection.find({});
             const result = await cursor.toArray();
             res.send(result);
         });
