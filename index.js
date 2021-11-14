@@ -19,6 +19,7 @@ async function run(){
         const database = client.db("store");
         const carCollection = database.collection("items");
         const serviceCollection = database.collection("services");
+        const ordersCollection = database.collection("orders");
         // Get Api
         app.get("/store", async(req,res)=>{
             const cursor = carCollection.find({});
@@ -44,6 +45,13 @@ async function run(){
             const query = { _id : objectId(id) };
             const result = await carCollection.findOne(query);
             res.send(result);
+        });
+        // Post Orders Api 
+        app.post("/orders", async(req,res)=>{
+            const orders = req.body;
+            console.log(orders);
+            const result = await ordersCollection.insertOne(orders);
+            res.json(result);
         });
     }
     finally{
