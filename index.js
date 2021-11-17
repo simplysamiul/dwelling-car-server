@@ -21,6 +21,7 @@ async function run(){
         const carCollection = database.collection("items");
         const serviceCollection = database.collection("services");
         const ordersCollection = database.collection("orders");
+        const usersCollection = database.collection("users");
         // Get Api
         app.get("/store", async(req,res)=>{
             const cursor = carCollection.find({});
@@ -64,9 +65,30 @@ async function run(){
         // Post Orders Api 
         app.post("/orders", async(req,res)=>{
             const orders = req.body;
-            console.log(orders);
             const result = await ordersCollection.insertOne(orders);
             res.json(result);
+        });
+        // Post users api
+        app.post("/users", async(req,res)=>{
+            const user = req.body;
+            const result = await usersCollection.insertOne(user);
+            res.json(result);
+        });
+        // Post update data
+        app.put("/users", async(req,res)=>{
+            const user = req.body;
+            const filter = { email : user.email };
+            const options = { upsert: true };
+            const updateDoc = {$set : user};
+            const result = await usersCollection.updateOne(filter, updateDoc, options);
+            res.json(result);
+        });
+        // Delete order
+        app.delete("/orders", async(req,res)=>{
+            const email = req.query.email;
+            const query = {email : email};
+            const result = await ordersCollection.deleteOne(query);
+            console.log(result);
         });
     }
     finally{
