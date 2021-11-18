@@ -62,6 +62,17 @@ async function run(){
             const orders = await cursor.toArray();
             res.json(orders);
         })
+        // get Api for user info
+        app.get("/users/:email" , async(req,res)=>{
+            const email = req.params.email;
+            const query = { email };
+            const user = await usersCollection.findOne(query);
+            let isAdmin = false;
+            if(user?.role === "admin"){
+                isAdmin = true;
+            }
+            res.json({admin: isAdmin});
+        });
         // Post Orders Api 
         app.post("/orders", async(req,res)=>{
             const orders = req.body;
