@@ -74,6 +74,12 @@ async function run(){
             }
             res.json({admin: isAdmin});
         });
+        // Post Api for add car
+        app.post("/store/more", async(req,res)=>{
+            const car = req.body;
+            const result = await carCollection.insertOne(car);
+            res.json(result);
+        });
         // Post Orders Api 
         app.post("/orders", async(req,res)=>{
             const orders = req.body;
