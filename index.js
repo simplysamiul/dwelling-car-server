@@ -22,6 +22,7 @@ async function run(){
         const serviceCollection = database.collection("services");
         const ordersCollection = database.collection("orders");
         const usersCollection = database.collection("users");
+        const reviewCollection = database.collection("reviews");
         // Get Api
         app.get("/store", async(req,res)=>{
             const cursor = carCollection.find({});
@@ -92,6 +93,12 @@ async function run(){
             const result = await usersCollection.insertOne(user);
             res.json(result);
         });
+        // Post Review 
+        app.post("/reviews", async(req,res)=>{
+            const review = req.body;
+            console.log(review);
+            const result = await reviewCollection.insertOne(review);
+        })
         // Post update data
         app.put("/users", async(req,res)=>{
             const user = req.body;
