@@ -65,6 +65,7 @@ async function run(){
         // get Api for user info
         app.get("/users/:email" , async(req,res)=>{
             const email = req.params.email;
+            console.log(email);
             const query = { email };
             const user = await usersCollection.findOne(query);
             let isAdmin = false;
@@ -105,9 +106,9 @@ async function run(){
         // Delete order
         app.delete("/orders", async(req,res)=>{
             const email = req.query.email;
-            const query = {email : email};
+            const query = {email};
             const result = await ordersCollection.deleteOne(query);
-            console.log(result);
+            res.json(result);
         });
     }
     finally{
