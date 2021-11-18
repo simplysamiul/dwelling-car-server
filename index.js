@@ -98,6 +98,7 @@ async function run(){
             const review = req.body;
             console.log(review);
             const result = await reviewCollection.insertOne(review);
+            res.json(result);
         })
         // Post update data
         app.put("/users", async(req,res)=>{
