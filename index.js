@@ -124,9 +124,9 @@ async function run(){
 
         });
         // Delete order
-        app.delete("/orders", async(req,res)=>{
-            const email = req.query.email;
-            const query = {email};
+        app.delete("/orders/:id", async(req,res)=>{
+            const id = req.params.id;
+            const query = { _id  : objectId(id)};
             const result = await ordersCollection.deleteOne(query);
             res.json(result);
         });
@@ -136,7 +136,6 @@ async function run(){
             const query = { _id  : objectId(id)};
             const result = await carCollection.deleteOne(query);
             res.json(result);
-            console.log(result);
         });
     }
     finally{
