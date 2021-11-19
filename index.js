@@ -130,6 +130,14 @@ async function run(){
             const result = await ordersCollection.deleteOne(query);
             res.json(result);
         });
+        // Delet Product 
+        app.delete("/store/more/:id", async(req,res)=>{
+            const id = req.params.id;
+            const query = { _id  : objectId(id)};
+            const result = await carCollection.deleteOne(query);
+            res.json(result);
+            console.log(result);
+        });
     }
     finally{
         // await client.close();
