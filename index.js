@@ -75,6 +75,12 @@ async function run(){
             }
             res.json({admin: isAdmin});
         });
+        // // Get review api 
+        app.get("/reviews", async(req,res)=>{
+            const cursor = reviewCollection.find({});
+            const result = await cursor.toArray();
+            res.json(result);
+        });
         // Post Api for add car
         app.post("/store/more", async(req,res)=>{
             const car = req.body;
