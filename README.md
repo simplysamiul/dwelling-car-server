@@ -2,7 +2,7 @@
 
 #Details : 
 
-[Live-Link](https://dwelling-car.web.app/dashboard)
+[Live-Link](https://dwelling-car.web.app/)
 
 This website based on car seeling.Ther are are more companies car's and if you want then you can buy orders your car and buy that car.In this website 1st of all you can see home page there have almost 7 section. Those are menubar banner some car's that we are offer you some car service client's review discount offer and footer.if you login then you can see more option in the menubar those are explore dashboard and logout.If you go to the explore page there are you can see all showroom all car's listed here. In this website also have some features those are saying below : 
 
