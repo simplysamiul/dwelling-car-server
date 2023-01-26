@@ -148,7 +148,7 @@ run().catch(console.dir);
 
 // Root route
 app.get("/", (req,res)=>{
-    res.send("Kire vatija vala acos ?")
+    res.send("Dwelling casr server is running ?")
 });
 
 // Connect Port
